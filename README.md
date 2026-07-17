@@ -1,148 +1,151 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
 <html lang="az">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+<meta name="theme-color" content="#EFE3CB">
 <title>Sərdar &amp; Şəms — Toy Dəvətnaməsi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --wine: #5C1F2E;
-    --wine-deep: #421520;
-    --gold: #C6A15B;
-    --gold-light: #E4CB94;
-    --cream: #F6EFE4;
-    --blush: #D9B8A3;
-    --ink: #2B211D;
+    --page: #EFE3CB;
+    --card: #F8F0DC;
+    --gold: #A9803F;
+    --gold-light: #C9A24B;
+    --gold-deep: #7C5B26;
+    --ink: #3E3123;
+    --ink-soft: #6B5A42;
+    --blush: #E7D3C9;
   }
   *{ box-sizing: border-box; }
   html{ scroll-behavior: smooth; }
   body{
     margin:0;
-    background: var(--cream);
+    background: var(--page);
     color: var(--ink);
-    font-family: 'Noto Serif', serif;
+    font-family: 'Noto Serif', Georgia, 'Times New Roman', serif;
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -webkit-tap-highlight-color: transparent;
     overflow-x: hidden;
+    width: 100%;
   }
+  a{ color: inherit; text-decoration: none; }
   .accent{ font-family: 'Cormorant Garamond', serif; }
 
-  /* ---------- reveal ---------- */
   .reveal{ opacity:0; transform: translateY(24px); transition: opacity 0.9s ease, transform 0.9s ease; }
   .reveal.in{ opacity:1; transform: translateY(0); }
-  @media (prefers-reduced-motion: reduce){
-    .reveal{ opacity:1; transform:none; transition:none; }
+  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
+
+  /* ================= HERO / INVITATION CARD ================= */
+  .hero-wrap{
+    min-height: 100vh;    /* fallback for older browsers */
+    min-height: 100dvh;   /* adjusts correctly as mobile browser chrome shows/hides */
+    display:flex; align-items:center; justify-content:center;
+    padding: 40px 16px;
+    background:
+      radial-gradient(140% 100% at 50% 0%, #F5EAD3 0%, #EFE3CB 55%, #E7D8B9 100%);
   }
-
-  /* ---------- buta motif ---------- */
-  .buta{ display:block; }
-
-  /* ---------- hero ---------- */
-  .hero{
+  .invite-card{
     position: relative;
-    min-height: 100svh;
-    background: radial-gradient(120% 90% at 50% 15%, var(--wine) 0%, var(--wine-deep) 70%);
-    color: var(--gold-light);
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
+    width: 100%;
+    max-width: 620px;
+    background: var(--card);
+    padding: 56px 34px 60px;
     text-align:center;
-    padding: 48px 24px 64px;
-    overflow:hidden;
+    box-shadow: 0 40px 80px -40px rgba(124,91,38,0.35);
   }
-  .hero::before, .hero::after{
-    content:"";
-    position:absolute;
-    width:180px; height:180px;
-    background-repeat:no-repeat;
-    background-size:contain;
-    opacity:0.16;
-  }
-  .hero .frame-line{
-    position:absolute;
-    inset: 22px;
-    border: 1px solid rgba(198,161,91,0.35);
+  /* outer + inner hairline border, arched top like the reference */
+  .card-border{
+    position:absolute; top:14px; right:14px; bottom:14px; left:14px;
+    border: 1px solid var(--gold);
     pointer-events:none;
   }
-  .hero .frame-line::before,.hero .frame-line::after{
+  .card-border::before{
     content:"";
-    position:absolute;
-    width:34px;height:34px;
-    border: 1px solid var(--gold);
+    position:absolute; top:7px; right:7px; bottom:7px; left:7px;
+    border: 1px solid rgba(169,128,63,0.55);
   }
-  .hero .frame-line::before{ top:-1px; left:-1px; border-right:none; border-bottom:none; }
-  .hero .frame-line::after{ bottom:-1px; right:-1px; border-left:none; border-top:none; }
+  .card-border .corner{
+    position:absolute; width:26px; height:26px; border: 1px solid var(--gold);
+  }
+  .card-border .corner.tl{ top:-1px; left:-1px; border-right:none; border-bottom:none; }
+  .card-border .corner.tr{ top:-1px; right:-1px; border-left:none; border-bottom:none; }
+  .card-border .corner.bl{ bottom:-1px; left:-1px; border-right:none; border-top:none; }
+  .card-border .corner.br{ bottom:-1px; right:-1px; border-left:none; border-top:none; }
+
+  /* floral corner ornaments (hand-drawn line art, not photographic) */
+  .floral{ position:absolute; width: 120px; height:120px; opacity: 0.9; }
+  .floral.c-tl{ top:-18px; left:-18px; }
+  .floral.c-br{ bottom:-18px; right:-18px; transform: rotate(180deg); }
 
   .eyebrow{
-    letter-spacing: 0.42em;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
     font-size: 11.5px;
-    color: var(--gold);
-    margin-bottom: 26px;
+    color: var(--gold-deep);
+    margin: 8px 0 22px;
   }
-  .names{
-    font-size: clamp(2.6rem, 8vw, 5.2rem);
-    line-height: 1.06;
-    margin: 0;
-    font-weight: 500;
-  }
-  .names .amp{
-    font-family:'Cormorant Garamond', serif;
-    font-style: italic;
-    color: var(--gold);
-    font-size: 0.75em;
-    display:inline-block;
-    margin: 0 0.12em;
-  }
-  .hero-sub{
-    margin-top: 22px;
-    font-family:'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: clamp(1.05rem, 2.4vw, 1.35rem);
-    color: var(--blush);
-    max-width: 520px;
-  }
-  .hero-date{
-    margin-top: 40px;
-    display:flex;
-    align-items:center;
-    gap: 18px;
-    font-family:'Cormorant Garamond', serif;
-  }
-  .hero-date .num{
-    font-size: clamp(2.4rem, 6vw, 3.4rem);
-    color: var(--gold-light);
-    letter-spacing: 0.04em;
-  }
-  .hero-date .div{ width:1px; height: 46px; background: rgba(198,161,91,0.5); }
-  .hero-date .venue{
-    text-align:left;
-    font-size: 0.95rem;
-    letter-spacing: 0.03em;
-    color: var(--blush);
-    max-width: 160px;
-  }
-  .scroll-cue{
-    position:absolute;
-    bottom: 28px;
-    font-size: 11px;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--gold);
-    opacity: 0.75;
-    display:flex;
-    flex-direction: column;
-    align-items:center;
-    gap:8px;
-  }
-  .scroll-cue .line{ width:1px; height: 30px; background: var(--gold); animation: pulse 2.2s ease-in-out infinite; }
-  @keyframes pulse{ 0%,100%{ opacity:0.25; } 50%{ opacity:1; } }
-  @media (prefers-reduced-motion: reduce){ .scroll-cue .line{ animation:none; } }
+  .flourish{ margin: 0 auto 22px; display:block; }
 
-  /* ---------- divider ---------- */
+  .names{
+    margin: 4px 0 0;
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: 600;
+    line-height: 1.05;
+    color: var(--gold-deep); /* solid-color fallback if gradient text isn't supported */
+  }
+  @supports ((-webkit-background-clip: text) or (background-clip: text)){
+    .names{
+      background: linear-gradient(180deg, #C9A24B 0%, #8C6B32 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+  }
+  .names .n1{ font-size: clamp(3.2rem, 12vw, 4.6rem); display:block; }
+  .names .n2{ font-size: clamp(3.2rem, 12vw, 4.6rem); display:block; margin-top: -6px; }
+  .name-divider{ margin: 6px auto 10px; }
+
+  .invite-line{
+    margin-top: 20px;
+    font-size: 1.02rem;
+    color: var(--ink-soft);
+  }
+  .small-rule{ width:70px; height:1px; background: var(--gold); opacity:0.6; margin: 16px auto; }
+
+  .hero-date-big{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: clamp(2.2rem, 7vw, 3rem);
+    letter-spacing: 0.06em;
+    color: var(--gold-deep);
+    margin-top: 4px;
+  }
+  .hero-time{ margin-top: 14px; font-size: 1.05rem; color: var(--ink); }
+  .venue-name{
+    margin-top: 16px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 1.15rem;
+    color: var(--ink);
+  }
+  .venue-sub{ font-size: 1rem; color: var(--ink-soft); margin-top: 2px; }
+  .venue-address{
+    margin-top: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.02rem;
+    color: var(--ink-soft);
+  }
+
+  /* ================= divider between sections ================= */
   .divider{
     display:flex; align-items:center; justify-content:center; gap:14px;
     margin: 0 auto; padding: 0 24px;
@@ -150,130 +153,169 @@
   }
   .divider .rule{ height:1px; width: 64px; background: var(--gold); opacity:0.55; }
 
-  /* ---------- section base ---------- */
-  section{ padding: 96px 24px; }
+  section{ padding: 88px 24px; }
   .container{ max-width: 720px; margin: 0 auto; text-align:center; }
 
   .section-title{
-    font-size: clamp(1.7rem, 4vw, 2.3rem);
+    font-size: clamp(1.6rem, 4vw, 2.1rem);
     font-weight: 500;
-    color: var(--wine);
-    margin: 22px 0 0;
+    color: var(--gold-deep);
+    margin: 18px 0 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
   }
 
-  /* ---------- invite text ---------- */
   .invite-text{
     font-family:'Cormorant Garamond', serif;
     font-style: italic;
     font-size: clamp(1.1rem, 2.6vw, 1.4rem);
     line-height: 1.75;
     color: var(--ink);
-    margin-top: 28px;
+    margin-top: 26px;
   }
 
-  /* ---------- details ---------- */
-  .details{ background: var(--wine); color: var(--gold-light); }
-  .details .section-title{ color: var(--gold-light); }
+  /* ================= details ================= */
+  .details{ background: #F3E7CC; border-top: 1px solid var(--blush); border-bottom: 1px solid var(--blush); }
   .cards{
     display:grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 28px;
-    margin-top: 48px;
+    gap: 26px;
+    margin-top: 46px;
   }
   .card{
-    background: rgba(246,239,228,0.04);
-    border: 1px solid rgba(198,161,91,0.35);
-    border-radius: 2px;
-    padding: 32px 22px;
+    background: var(--card);
+    border: 1px solid rgba(169,128,63,0.35);
+    padding: 30px 20px;
   }
-  .card svg{ width: 34px; height:34px; margin-bottom: 16px; }
+  .card svg{ width: 32px; height:32px; margin-bottom: 14px; }
   .card h3{
     font-family:'Cormorant Garamond', serif;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    font-size: 0.82rem;
-    color: var(--gold);
-    margin: 0 0 10px;
+    font-size: 0.8rem;
+    color: var(--gold-deep);
+    margin: 0 0 8px;
   }
-  .card p{ margin:0; font-size: 1.02rem; line-height:1.5; color: var(--cream); }
-  .card .note{ font-family:'Cormorant Garamond', serif; font-style: italic; font-size:0.85rem; color: var(--blush); margin-top:8px; }
+  .card p{ margin:0; font-size: 1rem; line-height:1.5; color: var(--ink); }
 
-  /* ---------- countdown ---------- */
+  /* ================= countdown ================= */
   .countdown{
-    display:flex; justify-content:center; gap: clamp(14px,4vw,34px);
-    margin-top: 56px; flex-wrap: wrap;
+    display:flex; justify-content:center; gap: clamp(14px,4vw,32px);
+    margin-top: 52px; flex-wrap: wrap;
   }
-  .cd-unit{ text-align:center; min-width: 74px; }
+  .cd-unit{ text-align:center; min-width: 70px; }
   .cd-num{
     font-family:'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 5vw, 2.8rem);
-    color: var(--gold-light);
+    font-size: clamp(1.9rem, 5vw, 2.6rem);
+    color: var(--gold-deep);
     line-height:1;
   }
   .cd-label{
     margin-top: 8px;
-    font-size: 10.5px;
-    letter-spacing: 0.22em;
+    font-size: 10px;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--blush);
+    color: var(--ink-soft);
   }
 
-  /* ---------- rsvp ---------- */
-  .rsvp{ background: var(--cream); }
+  /* ================= rsvp ================= */
   .rsvp-frame{
-    margin-top: 42px;
-    border: 1px solid var(--blush);
+    margin-top: 40px;
+    border: 1px solid var(--gold);
     background: #fff;
-    box-shadow: 0 30px 60px -30px rgba(92,31,46,0.35);
+    box-shadow: 0 30px 60px -30px rgba(124,91,38,0.3);
     padding: 6px;
   }
-  .rsvp-frame iframe{
-    width:100%;
-    height: 760px;
-    border:0;
-    display:block;
+  .rsvp-frame iframe{ width:100%; height: 760px; border:0; display:block; -webkit-overflow-scrolling: touch; }
+  @media (max-width: 480px){ .rsvp-frame iframe{ height: 900px; } }
+  .rsvp-fallback{
+    margin-top: 16px;
+    font-family:'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
   }
-  @media (max-width: 480px){
-    .rsvp-frame iframe{ height: 900px; }
-  }
+  .rsvp-fallback a{ color: var(--gold-deep); text-decoration: underline; }
 
-  /* ---------- footer ---------- */
+  /* ================= footer ================= */
   footer{
-    background: var(--wine-deep);
-    color: var(--blush);
+    background: var(--gold-deep);
+    color: #F3E7CC;
     text-align:center;
-    padding: 56px 24px 44px;
+    padding: 50px 24px 40px;
     font-family:'Cormorant Garamond', serif;
     font-style: italic;
   }
-  footer .monogram{ color: var(--gold); font-size: 1.4rem; margin-bottom: 14px; }
+  footer .monogram{ color: #F3E7CC; font-size: 1.3rem; margin-bottom: 12px; letter-spacing: 0.1em; }
 </style>
 </head>
 <body>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="frame-line"></div>
-  <svg class="buta" width="86" height="130" viewBox="0 0 86 130" style="margin-bottom:20px;" aria-hidden="true">
-    <path d="M43 4 C 74 22, 80 58, 58 86 C 46 101, 46 112, 60 122" fill="none" stroke="#C6A15B" stroke-width="1.4"/>
-    <path d="M43 4 C 12 22, 6 58, 28 86 C 40 101, 40 112, 26 122" fill="none" stroke="#C6A15B" stroke-width="1.4"/>
-    <circle cx="43" cy="4" r="3" fill="#C6A15B"/>
-  </svg>
-  <div class="eyebrow reveal">Toy dəvətnaməsi</div>
-  <h1 class="names reveal">Sərdar<span class="amp">&amp;</span>Şəms</h1>
-  <p class="hero-sub reveal">Bir arzu, iki ürək, sonsuza qədər bir yol&hellip;</p>
-  <div class="hero-date reveal">
-    <span class="num">09.09</span>
-    <span class="div"></span>
-    <span class="venue">2026-cı il<br>Ma Donna Şadlıq Sarayı</span>
+<!-- HERO INVITATION CARD -->
+<div class="hero-wrap">
+  <div class="invite-card reveal">
+    <div class="card-border">
+      <span class="corner tl"></span><span class="corner tr"></span>
+      <span class="corner bl"></span><span class="corner br"></span>
+    </div>
+
+    <!-- floral line-art ornaments, top-left / bottom-right -->
+    <svg class="floral c-tl" viewBox="0 0 120 120" aria-hidden="true">
+      <g fill="none" stroke="#A9803F" stroke-width="1.1">
+        <path d="M14 70 C 10 50, 20 30, 40 20 C 55 12, 70 14, 78 22"/>
+        <path d="M20 62 C 30 55, 34 44, 30 34"/>
+        <path d="M28 76 C 40 70, 46 58, 42 46"/>
+        <circle cx="30" cy="30" r="9"/>
+        <circle cx="44" cy="20" r="6.5"/>
+        <circle cx="18" cy="46" r="5.5"/>
+        <path d="M56 16 C 62 20, 66 26, 64 34"/>
+        <path d="M62 12 C 68 16, 72 22, 70 30"/>
+      </g>
+    </svg>
+    <svg class="floral c-br" viewBox="0 0 120 120" aria-hidden="true">
+      <g fill="none" stroke="#A9803F" stroke-width="1.1">
+        <path d="M14 70 C 10 50, 20 30, 40 20 C 55 12, 70 14, 78 22"/>
+        <path d="M20 62 C 30 55, 34 44, 30 34"/>
+        <path d="M28 76 C 40 70, 46 58, 42 46"/>
+        <circle cx="30" cy="30" r="9"/>
+        <circle cx="44" cy="20" r="6.5"/>
+        <circle cx="18" cy="46" r="5.5"/>
+        <path d="M56 16 C 62 20, 66 26, 64 34"/>
+        <path d="M62 12 C 68 16, 72 22, 70 30"/>
+      </g>
+    </svg>
+
+    <div class="eyebrow">Birlikdə bir ömür, sevgi ilə&hellip;</div>
+
+    <svg class="flourish" width="120" height="20" viewBox="0 0 120 20" aria-hidden="true">
+      <path d="M4 10 H44" stroke="#A9803F" stroke-width="1"/>
+      <path d="M76 10 H116" stroke="#A9803F" stroke-width="1"/>
+      <path d="M50 10 C 54 4, 60 4, 60 10 C 60 4, 66 4, 70 10 C 66 12, 64 16, 60 14 C 56 16, 54 12, 50 10 Z" fill="#A9803F"/>
+    </svg>
+
+    <h1 class="names">
+      <span class="n1">Sərdar</span>
+      <svg class="name-divider" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M9 3 C 12 0, 17 3, 17 7 C 17 11, 12 13, 9 16 C 6 13, 1 11, 1 7 C 1 3, 6 0, 9 3 Z" fill="#A9803F"/></svg>
+      <span class="n2">Şəms</span>
+    </h1>
+
+    <p class="invite-line accent">Sizi toy mərasimimizə dəvət edirik</p>
+    <div class="small-rule"></div>
+
+    <div class="hero-date-big">09.09.2026</div>
+    <div class="hero-time">Saat: 18:00</div>
+
+    <div class="small-rule"></div>
+    <div class="venue-name">Ma Donna</div>
+    <div class="venue-sub">Şadlıq Sarayı</div>
+    <div class="venue-address">Ünvan: 24 Mehdi Abbasov, Baku</div>
   </div>
-  <div class="scroll-cue"><span>aşağı</span><span class="line"></span></div>
-</section>
+</div>
 
 <!-- INVITATION TEXT -->
 <section>
   <div class="container">
-    <div class="divider reveal"><span class="rule"></span><svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 1 C15 5,16 12,10 16 C9 17,9 17.5,10.5 18" fill="none" stroke="#C6A15B" stroke-width="1.2"/><path d="M9 1 C3 5,2 12,8 16 C9 17,9 17.5,7.5 18" fill="none" stroke="#C6A15B" stroke-width="1.2"/></svg><span class="rule"></span></div>
+    <div class="divider reveal"><span class="rule"></span><svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 1 C15 5,16 12,10 16 C9 17,9 17.5,10.5 18" fill="none" stroke="#A9803F" stroke-width="1.2"/><path d="M9 1 C3 5,2 12,8 16 C9 17,9 17.5,7.5 18" fill="none" stroke="#A9803F" stroke-width="1.2"/></svg><span class="rule"></span></div>
     <h2 class="section-title reveal">Sizi dəvət edirik</h2>
     <p class="invite-text reveal">
       Ömrümüzün ən mənalı günündə yanımızda sevdiklərimizin olmasını arzulayırıq.
@@ -286,24 +328,23 @@
 <!-- DETAILS -->
 <section class="details">
   <div class="container">
-    <div class="eyebrow reveal" style="color:var(--gold);">Mərasim haqqında</div>
+    <div class="eyebrow reveal" style="color:var(--gold-deep);">Mərasim haqqında</div>
     <h2 class="section-title reveal">Tarix və məkan</h2>
     <div class="cards">
       <div class="card reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#C6A15B" stroke-width="1.3"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="#A9803F" stroke-width="1.3"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
         <h3>Tarix</h3>
         <p>09 Sentyabr 2026<br>Çərşənbə</p>
       </div>
       <div class="card reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#C6A15B" stroke-width="1.3"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="#A9803F" stroke-width="1.3"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
         <h3>Vaxt</h3>
-        <p>Axşam saat 18:00</p>
-        <p class="note">Çox güman ki 19:00</p>
+        <p>Saat 18:00</p>
       </div>
       <div class="card reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#C6A15B" stroke-width="1.3"><path d="M12 21s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="#A9803F" stroke-width="1.3"><path d="M12 21s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
         <h3>Məkan</h3>
-        <p>Ma Donna<br>Şadlıq Sarayı</p>
+        <p>Ma Donna Şadlıq Sarayı<br>24 Mehdi Abbasov, Baku</p>
       </div>
     </div>
 
@@ -319,13 +360,17 @@
 <!-- RSVP -->
 <section class="rsvp">
   <div class="container">
-    <div class="divider reveal"><span class="rule"></span><svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 1 C15 5,16 12,10 16 C9 17,9 17.5,10.5 18" fill="none" stroke="#C6A15B" stroke-width="1.2"/><path d="M9 1 C3 5,2 12,8 16 C9 17,9 17.5,7.5 18" fill="none" stroke="#C6A15B" stroke-width="1.2"/></svg><span class="rule"></span></div>
-    <div class="eyebrow reveal" style="color:var(--gold);">İştirakınızı bildirin</div>
+    <div class="divider reveal"><span class="rule"></span><svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 1 C15 5,16 12,10 16 C9 17,9 17.5,10.5 18" fill="none" stroke="#A9803F" stroke-width="1.2"/><path d="M9 1 C3 5,2 12,8 16 C9 17,9 17.5,7.5 18" fill="none" stroke="#A9803F" stroke-width="1.2"/></svg><span class="rule"></span></div>
+    <div class="eyebrow reveal" style="color:var(--gold-deep);">İştirakınızı bildirin</div>
     <h2 class="section-title reveal">Cavabınızı gözləyirik</h2>
     <p class="invite-text reveal" style="font-size:1.05rem;">Aşağıdakı formu doldurmaqla iştirakınızı təsdiq edə bilərsiniz.</p>
     <div class="rsvp-frame reveal">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdOib1fJG00uGmWhcfUhw5lSw3P8DDMvNca_OM-xaDo1CIdtg/viewform?embedded=true" title="RSVP Formu">Yüklənir…</iframe>
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdOib1fJG00uGmWhcfUhw5lSw3P8DDMvNca_OM-xaDo1CIdtg/viewform?embedded=true" title="RSVP Formu" loading="lazy" referrerpolicy="no-referrer-when-downgrade">Yüklənir…</iframe>
     </div>
+    <p class="rsvp-fallback reveal">
+      Form açılmırsa,
+      <a href="https://forms.gle/pB8bmvZjFLZdc6y37" target="_blank" rel="noopener">bura klikləyin</a>.
+    </p>
   </div>
 </section>
 
@@ -335,19 +380,16 @@
 </footer>
 
 <script>
-  // Reveal on scroll
   const els = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window){
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { threshold: 0.15 });
     els.forEach(el=>io.observe(el));
-  } else {
-    els.forEach(el=>el.classList.add('in'));
-  }
+  } else { els.forEach(el=>el.classList.add('in')); }
 
-  // Countdown — 09 Sept 2026, 19:00 Baku time (UTC+4)
-  const target = new Date('2026-09-09T19:00:00+04:00').getTime();
+  // Countdown — 09 Sept 2026, 18:00 Baku time (UTC+4)
+  const target = new Date('2026-09-09T18:00:00+04:00').getTime();
   function updateCountdown(){
     const now = Date.now();
     const diff = Math.max(0, target - now);
