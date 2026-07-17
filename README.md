@@ -20,7 +20,11 @@
     --blush: #E7D3C9;
   }
   *{ box-sizing: border-box; }
-  html{ scroll-behavior: smooth; }
+  html{
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
   body{
     margin:0;
     background: var(--page);
@@ -41,8 +45,9 @@
 
   /* ================= HERO / INVITATION CARD ================= */
   .hero-wrap{
-    min-height: 100vh;    /* fallback for older browsers */
-    min-height: 100dvh;   /* adjusts correctly as mobile browser chrome shows/hides */
+    min-height: 100vh;    /* fallback for older/odd browsers */
+    min-height: 100dvh;   /* adjusts as mobile browser chrome shows/hides */
+    min-height: calc(var(--vh, 1vh) * 100); /* JS-corrected value, most reliable on Android */
     display:flex; align-items:center; justify-content:center;
     padding: 40px 16px;
     background:
@@ -80,6 +85,13 @@
   .floral{ position:absolute; width: 120px; height:120px; opacity: 0.9; }
   .floral.c-tl{ top:-18px; left:-18px; }
   .floral.c-br{ bottom:-18px; right:-18px; transform: rotate(180deg); }
+
+  @media (max-width: 380px){
+    .invite-card{ padding: 44px 20px 48px; }
+    .floral{ width: 84px; height: 84px; }
+    .floral.c-tl{ top:-10px; left:-10px; }
+    .floral.c-br{ bottom:-10px; right:-10px; }
+  }
 
   .eyebrow{
     letter-spacing: 0.28em;
@@ -216,6 +228,13 @@
     text-transform: uppercase;
     color: var(--ink-soft);
   }
+  @media (max-width: 380px){
+    section{ padding: 64px 18px; }
+    .cards{ gap: 18px; margin-top: 36px; }
+    .card{ padding: 24px 16px; }
+    .countdown{ gap: 12px; margin-top: 38px; }
+    .cd-unit{ min-width: 60px; }
+  }
 
   /* ================= rsvp ================= */
   .rsvp-frame{
@@ -246,6 +265,9 @@
     font-style: italic;
   }
   footer .monogram{ color: #F3E7CC; font-size: 1.3rem; margin-bottom: 12px; letter-spacing: 0.1em; }
+  @media (max-width: 380px){
+    footer{ padding: 40px 18px 32px; }
+  }
 </style>
 </head>
 <body>
@@ -379,6 +401,15 @@
 </footer>
 
 <script>
+  // Correct viewport height for Android browsers where vh/dvh is inconsistent
+  // (address bar show/hide changes the viewport without updating CSS units reliably)
+  function setRealVH(){
+    document.documentElement.style.setProperty('--vh', (window.innerHeight * 0.01) + 'px');
+  }
+  setRealVH();
+  window.addEventListener('resize', setRealVH);
+  window.addEventListener('orientationchange', setRealVH);
+
   const els = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window){
     const io = new IntersectionObserver((entries)=>{
