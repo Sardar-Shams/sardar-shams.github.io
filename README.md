@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
 <meta name="theme-color" content="#EFE3CB">
-<title>Sardar &amp; Şəms — Toy Dəvətnaməsi</title>
+<title>Sərdar &amp; Şəms — Toy Dəvətnaməsi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
@@ -319,7 +319,7 @@
     </svg>
 
     <h1 class="names">
-      <span class="n1">Sərdar</span>
+      <span class="n1">Sardar</span>
       <svg class="name-divider" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M9 3 C 12 0, 17 3, 17 7 C 17 11, 12 13, 9 16 C 6 13, 1 11, 1 7 C 1 3, 6 0, 9 3 Z" fill="#A9803F"/></svg>
       <span class="n2">Şəms</span>
     </h1>
