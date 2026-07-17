@@ -1,5 +1,3 @@
-# sardar-shams.github.io
-<!DOCTYPE html>
 <html lang="az">
 <head>
 <meta charset="UTF-8">
