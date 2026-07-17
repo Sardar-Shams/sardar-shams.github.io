@@ -48,7 +48,10 @@
     min-height: 100vh;    /* fallback for older/odd browsers */
     min-height: 100dvh;   /* adjusts as mobile browser chrome shows/hides */
     min-height: calc(var(--vh, 1vh) * 100); /* JS-corrected value, most reliable on Android */
-    display:flex; align-items:center; justify-content:center;
+    display:flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content:center;
     padding: 40px 16px;
     background:
       radial-gradient(140% 100% at 50% 0%, #F5EAD3 0%, #EFE3CB 55%, #E7D8B9 100%);
@@ -57,6 +60,7 @@
     position: relative;
     width: 100%;
     max-width: 620px;
+    margin: 0 auto;
     background: var(--card);
     padding: 56px 34px 60px;
     text-align:center;
