@@ -20,6 +20,7 @@
     --blush: #E7D3C9;
   }
   *{ box-sizing: border-box; }
+  header, footer, section, div{ display:block; }
   html{
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
@@ -45,14 +46,9 @@
 
   /* ================= HERO / INVITATION CARD ================= */
   .hero-wrap{
-    min-height: 100vh;    /* fallback for older/odd browsers */
-    min-height: 100dvh;   /* adjusts as mobile browser chrome shows/hides */
-    min-height: calc(var(--vh, 1vh) * 100); /* JS-corrected value, most reliable on Android */
-    display:flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content:center;
-    padding: 40px 16px;
+    min-height: 100vh;
+    padding: 64px 16px;
+    text-align: center;
     background:
       radial-gradient(140% 100% at 50% 0%, #F5EAD3 0%, #EFE3CB 55%, #E7D8B9 100%);
   }
@@ -278,7 +274,7 @@
 
 <!-- HERO INVITATION CARD -->
 <div class="hero-wrap">
-  <div class="invite-card reveal">
+  <div class="invite-card">
     <div class="card-border">
       <span class="corner tl"></span><span class="corner tr"></span>
       <span class="corner bl"></span><span class="corner br"></span>
@@ -319,7 +315,7 @@
     </svg>
 
     <h1 class="names">
-      <span class="n1">Sardar</span>
+      <span class="n1">Sərdar</span>
       <svg class="name-divider" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M9 3 C 12 0, 17 3, 17 7 C 17 11, 12 13, 9 16 C 6 13, 1 11, 1 7 C 1 3, 6 0, 9 3 Z" fill="#A9803F"/></svg>
       <span class="n2">Şəms</span>
     </h1>
@@ -405,15 +401,6 @@
 </footer>
 
 <script>
-  // Correct viewport height for Android browsers where vh/dvh is inconsistent
-  // (address bar show/hide changes the viewport without updating CSS units reliably)
-  function setRealVH(){
-    document.documentElement.style.setProperty('--vh', (window.innerHeight * 0.01) + 'px');
-  }
-  setRealVH();
-  window.addEventListener('resize', setRealVH);
-  window.addEventListener('orientationchange', setRealVH);
-
   const els = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window){
     const io = new IntersectionObserver((entries)=>{
