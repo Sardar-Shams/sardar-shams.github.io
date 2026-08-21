@@ -4,21 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
-<meta name="theme-color" content="#EFE3CB">
+<meta name="theme-color" content="#F1E7CF">
 <title>Sərdar &amp; Şəms — Toy Dəvətnaməsi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --page: #EFE3CB;
-    --card: #F8F0DC;
-    --gold: #A9803F;
-    --gold-light: #C9A24B;
-    --gold-deep: #7C5B26;
-    --ink: #3E3123;
-    --ink-soft: #6B5A42;
-    --blush: #E7D3C9;
+    --page: #F1E7CF;
+    --card: #FBF5E7;
+    --gold: #B8935A;
+    --gold-light: #D8B87E;
+    --gold-deep: #8C6B3C;
+    --ink: #4A3E2C;
+    --ink-soft: #7C6B50;
+    --blush: #EFE0CB;
   }
   *{ box-sizing: border-box; }
   header, footer, section, div{ display:block; }
@@ -51,7 +51,7 @@
     padding: 64px 16px;
     text-align: center;
     background:
-      radial-gradient(140% 100% at 50% 0%, #F5EAD3 0%, #EFE3CB 55%, #E7D8B9 100%);
+      radial-gradient(140% 100% at 50% 0%, #F8F0DD 0%, #F1E7CF 55%, #E9D9B8 100%);
   }
   .invite-card{
     position: relative;
@@ -61,7 +61,7 @@
     background: var(--card);
     padding: 56px 34px 60px;
     text-align:center;
-    box-shadow: 0 40px 80px -40px rgba(124,91,38,0.35);
+    box-shadow: 0 40px 80px -40px rgba(140,107,60,0.35);
   }
   /* outer + inner hairline border, arched top like the reference */
   .card-border{
@@ -72,7 +72,7 @@
   .card-border::before{
     content:"";
     position:absolute; top:7px; right:7px; bottom:7px; left:7px;
-    border: 1px solid rgba(169,128,63,0.55);
+    border: 1px solid rgba(184,147,90,0.55);
   }
   .card-border .corner{
     position:absolute; width:26px; height:26px; border: 1px solid var(--gold);
@@ -113,7 +113,7 @@
   }
   @supports ((-webkit-background-clip: text) or (background-clip: text)){
     .names{
-      background: linear-gradient(180deg, #C9A24B 0%, #8C6B32 100%);
+      background: linear-gradient(180deg, #D8B87E 0%, #96723F 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -187,7 +187,7 @@
   }
 
   /* ================= details ================= */
-  .details{ background: #F3E7CC; border-top: 1px solid var(--blush); border-bottom: 1px solid var(--blush); }
+  .details{ background: #F5EBD3; border-top: 1px solid var(--blush); border-bottom: 1px solid var(--blush); }
   .cards{
     display:grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -196,7 +196,7 @@
   }
   .card{
     background: var(--card);
-    border: 1px solid rgba(169,128,63,0.35);
+    border: 1px solid rgba(184,147,90,0.35);
     padding: 30px 20px;
   }
   .card svg{ width: 32px; height:32px; margin-bottom: 14px; }
@@ -237,12 +237,67 @@
     .cd-unit{ min-width: 60px; }
   }
 
+  /* ================= program schedule ================= */
+  .program{ background: var(--page); }
+  .timeline{
+    margin-top: 48px;
+    text-align: left;
+    max-width: 460px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+  }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left: 78px;
+    top: 6px;
+    bottom: 6px;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, var(--gold) 6%, var(--gold) 94%, transparent);
+    opacity: 0.5;
+  }
+  .t-row{
+    display:flex;
+    align-items: baseline;
+    gap: 18px;
+    padding: 13px 0;
+    position: relative;
+  }
+  .t-time{
+    flex: 0 0 60px;
+    text-align: right;
+    font-family:'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: var(--gold-deep);
+    letter-spacing: 0.03em;
+  }
+  .t-dot{
+    flex: 0 0 auto;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--card);
+    border: 1.5px solid var(--gold);
+    margin-top: 4px;
+  }
+  .t-label{
+    font-size: 1rem;
+    color: var(--ink);
+    padding-top: 1px;
+  }
+  @media (max-width: 380px){
+    .timeline::before{ left: 66px; }
+    .t-time{ flex-basis: 48px; font-size: 1.02rem; }
+    .t-row{ gap: 12px; }
+  }
+
   /* ================= rsvp ================= */
   .rsvp-frame{
     margin-top: 40px;
     border: 1px solid var(--gold);
     background: #fff;
-    box-shadow: 0 30px 60px -30px rgba(124,91,38,0.3);
+    box-shadow: 0 30px 60px -30px rgba(140,107,60,0.3);
     padding: 6px;
   }
   .rsvp-frame iframe{ width:100%; height: 760px; border:0; display:block; -webkit-overflow-scrolling: touch; }
@@ -259,13 +314,13 @@
   /* ================= footer ================= */
   footer{
     background: var(--gold-deep);
-    color: #F3E7CC;
+    color: #F5EBD3;
     text-align:center;
     padding: 50px 24px 40px;
     font-family:'Cormorant Garamond', serif;
     font-style: italic;
   }
-  footer .monogram{ color: #F3E7CC; font-size: 1.3rem; margin-bottom: 12px; letter-spacing: 0.1em; }
+  footer .monogram{ color: #F5EBD3; font-size: 1.3rem; margin-bottom: 12px; letter-spacing: 0.1em; }
   @media (max-width: 380px){
     footer{ padding: 40px 18px 32px; }
   }
@@ -283,7 +338,7 @@
 
     <!-- floral line-art ornaments, top-left / bottom-right -->
     <svg class="floral c-tl" viewBox="0 0 120 120" aria-hidden="true">
-      <g fill="none" stroke="#A9803F" stroke-width="1.1">
+      <g fill="none" stroke="#B8935A" stroke-width="1.1">
         <path d="M14 70 C 10 50, 20 30, 40 20 C 55 12, 70 14, 78 22"/>
         <path d="M20 62 C 30 55, 34 44, 30 34"/>
         <path d="M28 76 C 40 70, 46 58, 42 46"/>
@@ -295,7 +350,7 @@
       </g>
     </svg>
     <svg class="floral c-br" viewBox="0 0 120 120" aria-hidden="true">
-      <g fill="none" stroke="#A9803F" stroke-width="1.1">
+      <g fill="none" stroke="#B8935A" stroke-width="1.1">
         <path d="M14 70 C 10 50, 20 30, 40 20 C 55 12, 70 14, 78 22"/>
         <path d="M20 62 C 30 55, 34 44, 30 34"/>
         <path d="M28 76 C 40 70, 46 58, 42 46"/>
@@ -310,14 +365,14 @@
     <div class="eyebrow">Birlikdə bir ömür, sevgi ilə&hellip;</div>
 
     <svg class="flourish" width="120" height="20" viewBox="0 0 120 20" aria-hidden="true">
-      <path d="M4 10 H44" stroke="#A9803F" stroke-width="1"/>
-      <path d="M76 10 H116" stroke="#A9803F" stroke-width="1"/>
-      <path d="M50 10 C 54 4, 60 4, 60 10 C 60 4, 66 4, 70 10 C 66 12, 64 16, 60 14 C 56 16, 54 12, 50 10 Z" fill="#A9803F"/>
+      <path d="M4 10 H44" stroke="#B8935A" stroke-width="1"/>
+      <path d="M76 10 H116" stroke="#B8935A" stroke-width="1"/>
+      <path d="M50 10 C 54 4, 60 4, 60 10 C 60 4, 66 4, 70 10 C 66 12, 64 16, 60 14 C 56 16, 54 12, 50 10 Z" fill="#B8935A"/>
     </svg>
 
     <h1 class="names">
       <span class="n1">Sərdar</span>
-      <svg class="name-divider" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M9 3 C 12 0, 17 3, 17 7 C 17 11, 12 13, 9 16 C 6 13, 1 11, 1 7 C 1 3, 6 0, 9 3 Z" fill="#A9803F"/></svg>
+      <svg class="name-divider" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M9 3 C 12 0, 17 3, 17 7 C 17 11, 12 13, 9 16 C 6 13, 1 11, 1 7 C 1 3, 6 0, 9 3 Z" fill="#B8935A"/></svg>
       <span class="n2">Şəms</span>
     </h1>
 
@@ -337,7 +392,7 @@
 <!-- INVITATION TEXT -->
 <section>
   <div class="container">
-    <div class="divider reveal"><span class="rule"></span><svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 1 C15 5,16 12,10 16 C9 17,9 17.5,10.5 18" fill="none" stroke="#A9803F" stroke-width="1.2"/><path d="M9 1 C3 5,2 12,8 16 C9 17,9 17.5,7.5 18" fill="none" stroke="#A9803F" stroke-width="1.2"/></svg><span class="rule"></span></div>
+    <div class="divider reveal"><span class="rule"></span><svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 1 C15 5,16 12,10 16 C9 17,9 17.5,10.5 18" fill="none" stroke="#B8935A" stroke-width="1.2"/><path d="M9 1 C3 5,2 12,8 16 C9 17,9 17.5,7.5 18" fill="none" stroke="#B8935A" stroke-width="1.2"/></svg><span class="rule"></span></div>
     <h2 class="section-title reveal">Sizi dəvət edirik</h2>
     <p class="invite-text reveal">
       Ən xoş günümüzdə sevincimizi sizinlə bölüşməkdən məmnun olarıq. 
@@ -353,17 +408,17 @@
     <h2 class="section-title reveal">Tarix və məkan</h2>
     <div class="cards">
       <div class="card reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#A9803F" stroke-width="1.3"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="#B8935A" stroke-width="1.3"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
         <h3>Tarix</h3>
         <p>09 Sentyabr 2026<br>Çərşənbə</p>
       </div>
       <div class="card reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#A9803F" stroke-width="1.3"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="#B8935A" stroke-width="1.3"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
         <h3>Vaxt</h3>
         <p>Saat 18:00</p>
       </div>
       <div class="card reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#A9803F" stroke-width="1.3"><path d="M12 21s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="#B8935A" stroke-width="1.3"><path d="M12 21s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
         <h3>Məkan</h3>
         <p>Ma Donna Şadlıq Sarayı<br>24 Mehdi Abbasov, Baku</p>
       </div>
@@ -378,10 +433,32 @@
   </div>
 </section>
 
+<!-- PROGRAM SCHEDULE -->
+<section class="program">
+  <div class="container">
+    <div class="divider reveal"><span class="rule"></span><svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 1 C15 5,16 12,10 16 C9 17,9 17.5,10.5 18" fill="none" stroke="#B8935A" stroke-width="1.2"/><path d="M9 1 C3 5,2 12,8 16 C9 17,9 17.5,7.5 18" fill="none" stroke="#B8935A" stroke-width="1.2"/></svg><span class="rule"></span></div>
+    <div class="eyebrow reveal" style="color:var(--gold-deep);">Axşamın gedişatı</div>
+    <h2 class="section-title reveal">Tədbirin proqramı</h2>
+
+    <div class="timeline reveal">
+      <div class="t-row"><div class="t-time">18:00</div><div class="t-dot"></div><div class="t-label">Qonaqların qarşılanması</div></div>
+      <div class="t-row"><div class="t-time">19:00</div><div class="t-dot"></div><div class="t-label">Bəy və gəlinin girişi</div></div>
+      <div class="t-row"><div class="t-time">19:15</div><div class="t-dot"></div><div class="t-label">Rəqs bloku</div></div>
+      <div class="t-row"><div class="t-time">20:30</div><div class="t-dot"></div><div class="t-label">Samir Bağırov</div></div>
+      <div class="t-row"><div class="t-time">21:00</div><div class="t-dot"></div><div class="t-label">Plov servisi</div></div>
+      <div class="t-row"><div class="t-time">21:30</div><div class="t-dot"></div><div class="t-label">Edglis Hayle</div></div>
+      <div class="t-row"><div class="t-time">22:00</div><div class="t-dot"></div><div class="t-label">Diskoteka</div></div>
+      <div class="t-row"><div class="t-time">22:30</div><div class="t-dot"></div><div class="t-label">Tort mərasimi</div></div>
+      <div class="t-row"><div class="t-time">22:40</div><div class="t-dot"></div><div class="t-label">Diskoteka</div></div>
+      <div class="t-row"><div class="t-time">23:30</div><div class="t-dot"></div><div class="t-label">Yekun</div></div>
+    </div>
+  </div>
+</section>
+
 <!-- RSVP -->
 <section class="rsvp">
   <div class="container">
-    <div class="divider reveal"><span class="rule"></span><svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 1 C15 5,16 12,10 16 C9 17,9 17.5,10.5 18" fill="none" stroke="#A9803F" stroke-width="1.2"/><path d="M9 1 C3 5,2 12,8 16 C9 17,9 17.5,7.5 18" fill="none" stroke="#A9803F" stroke-width="1.2"/></svg><span class="rule"></span></div>
+    <div class="divider reveal"><span class="rule"></span><svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 1 C15 5,16 12,10 16 C9 17,9 17.5,10.5 18" fill="none" stroke="#B8935A" stroke-width="1.2"/><path d="M9 1 C3 5,2 12,8 16 C9 17,9 17.5,7.5 18" fill="none" stroke="#B8935A" stroke-width="1.2"/></svg><span class="rule"></span></div>
     <div class="eyebrow reveal" style="color:var(--gold-deep);">İştirakınız barədə</div>
     <h2 class="section-title reveal">Aşağıdakı formu doldurmağınız xahiş olunur</h2>
     <div class="rsvp-frame reveal">
