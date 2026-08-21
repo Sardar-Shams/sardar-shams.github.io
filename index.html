@@ -11,14 +11,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --page: #F1E7CF;
-    --card: #FBF5E7;
+    --page: #F3E9D6;
+    --card: #FCF7EA;
     --gold: #B8935A;
-    --gold-light: #D8B87E;
+    --gold-light: #DDBD86;
     --gold-deep: #8C6B3C;
     --ink: #4A3E2C;
     --ink-soft: #7C6B50;
     --blush: #EFE0CB;
+    --rose: #E3C9BC;
+    --rose-deep: #C7A08F;
+    --leaf: #9CA582;
   }
   *{ box-sizing: border-box; }
   header, footer, section, div{ display:block; }
@@ -47,11 +50,34 @@
 
   /* ================= HERO / INVITATION CARD ================= */
   .hero-wrap{
+    position: relative;
     min-height: 100vh;
     padding: 64px 16px;
     text-align: center;
+    overflow: hidden;
     background:
-      radial-gradient(140% 100% at 50% 0%, #F8F0DD 0%, #F1E7CF 55%, #E9D9B8 100%);
+      radial-gradient(140% 100% at 50% 0%, #F8F0DD 0%, #F3E9D6 55%, #E9D6B0 100%);
+  }
+  .hero-wrap > *{ position: relative; z-index: 2; }
+
+  /* soft full-page floral watermarks */
+  .bg-floral{
+    position:absolute;
+    pointer-events:none;
+    z-index: 1;
+    opacity: 0.6;
+  }
+  section{ position: relative; overflow: hidden; }
+  section > .container{ position: relative; z-index: 2; }
+  .bg-floral.corner-tl{ top:-40px; left:-50px; width: 260px; height:260px; }
+  .bg-floral.corner-br{ bottom:-40px; right:-50px; width: 260px; height:260px; transform: rotate(180deg); }
+  .bg-floral.corner-tr{ top:-30px; right:-40px; width: 200px; height:200px; transform: scaleX(-1); }
+  .bg-floral.corner-bl{ bottom:-30px; left:-40px; width: 200px; height:200px; transform: scaleX(-1) rotate(180deg); }
+  .bg-floral.small{ width: 150px; height: 150px; opacity: 0.45; }
+  @media (max-width: 480px){
+    .bg-floral{ opacity: 0.4; }
+    .bg-floral.corner-tl, .bg-floral.corner-br{ width: 170px; height:170px; }
+    .bg-floral.corner-tr, .bg-floral.corner-bl{ width: 130px; height:130px; }
   }
   .invite-card{
     position: relative;
@@ -313,14 +339,19 @@
 
   /* ================= footer ================= */
   footer{
-    background: var(--gold-deep);
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(160deg, #8C6B3C 0%, #7A5C34 100%);
     color: #F5EBD3;
     text-align:center;
-    padding: 50px 24px 40px;
+    padding: 54px 24px 44px;
     font-family:'Cormorant Garamond', serif;
     font-style: italic;
   }
-  footer .monogram{ color: #F5EBD3; font-size: 1.3rem; margin-bottom: 12px; letter-spacing: 0.1em; }
+  footer > *{ position: relative; z-index: 2; }
+  footer .bg-floral{ opacity: 0.18; filter: brightness(2); }
+  footer .monogram{ color: #F5EBD3; font-size: 1.4rem; margin-bottom: 12px; letter-spacing: 0.15em; }
+  footer .monogram svg{ display:block; margin: 0 auto 10px; }
   @media (max-width: 380px){
     footer{ padding: 40px 18px 32px; }
   }
@@ -328,8 +359,43 @@
 </head>
 <body>
 
+<!-- shared floral motif, reused throughout via <use> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="roseMotif" viewBox="0 0 240 240">
+      <g fill="none" stroke="#9CA582" stroke-width="1.1" opacity="0.55">
+        <path d="M118 226 C 96 190, 40 178, 10 190"/>
+        <path d="M118 226 C 130 186, 150 150, 210 138"/>
+        <path d="M60 196 C 66 178, 62 160, 44 148"/>
+        <path d="M150 160 C 168 150, 176 134, 172 116"/>
+      </g>
+      <g opacity="0.5">
+        <ellipse cx="42" cy="150" rx="15" ry="7" fill="#9CA582" transform="rotate(-32 42 150)"/>
+        <ellipse cx="176" cy="118" rx="15" ry="7" fill="#9CA582" transform="rotate(38 176 118)"/>
+        <ellipse cx="70" cy="200" rx="13" ry="6" fill="#9CA582" transform="rotate(20 70 200)"/>
+      </g>
+      <g transform="translate(150,78)">
+        <circle r="40" fill="#E3C9BC" opacity="0.45"/>
+        <circle r="30" cx="-4" cy="6" fill="#DDBD86" opacity="0.4"/>
+        <path d="M0 -26 C 16 -22, 26 -8, 22 8 C 18 22, 2 28, -12 22 C -24 16, -28 0, -20 -12 C -14 -22, -6 -28, 0 -26 Z" fill="none" stroke="#B8935A" stroke-width="1.2" opacity="0.75"/>
+        <path d="M0 -14 C 9 -12, 14 -4, 11 5 C 8 12, -1 15, -8 11 C -14 8, -16 -1, -11 -8 C -7 -13, -3 -15, 0 -14 Z" fill="none" stroke="#B8935A" stroke-width="1.1" opacity="0.75"/>
+        <circle r="4" fill="#B8935A" opacity="0.5"/>
+      </g>
+      <g fill="#DDBD86" opacity="0.55">
+        <circle cx="196" cy="150" r="5.5"/>
+        <circle cx="210" cy="160" r="4"/>
+        <circle cx="20" cy="176" r="4.5"/>
+        <circle cx="8" cy="164" r="3.2"/>
+        <circle cx="86" cy="212" r="3.6"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
 <!-- HERO INVITATION CARD -->
 <div class="hero-wrap">
+  <svg class="bg-floral corner-tl"><use href="#roseMotif"/></svg>
+  <svg class="bg-floral corner-br"><use href="#roseMotif"/></svg>
   <div class="invite-card">
     <div class="card-border">
       <span class="corner tl"></span><span class="corner tr"></span>
@@ -391,6 +457,7 @@
 
 <!-- INVITATION TEXT -->
 <section>
+  <svg class="bg-floral corner-tr small"><use href="#roseMotif"/></svg>
   <div class="container">
     <div class="divider reveal"><span class="rule"></span><svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 1 C15 5,16 12,10 16 C9 17,9 17.5,10.5 18" fill="none" stroke="#B8935A" stroke-width="1.2"/><path d="M9 1 C3 5,2 12,8 16 C9 17,9 17.5,7.5 18" fill="none" stroke="#B8935A" stroke-width="1.2"/></svg><span class="rule"></span></div>
     <h2 class="section-title reveal">Sizi dəvət edirik</h2>
@@ -403,6 +470,8 @@
 
 <!-- DETAILS -->
 <section class="details">
+  <svg class="bg-floral corner-tr small"><use href="#roseMotif"/></svg>
+  <svg class="bg-floral corner-bl small"><use href="#roseMotif"/></svg>
   <div class="container">
     <div class="eyebrow reveal" style="color:var(--gold-deep);">Mərasim haqqında</div>
     <h2 class="section-title reveal">Tarix və məkan</h2>
@@ -435,6 +504,8 @@
 
 <!-- PROGRAM SCHEDULE -->
 <section class="program">
+  <svg class="bg-floral corner-tl small"><use href="#roseMotif"/></svg>
+  <svg class="bg-floral corner-br small"><use href="#roseMotif"/></svg>
   <div class="container">
     <div class="divider reveal"><span class="rule"></span><svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 1 C15 5,16 12,10 16 C9 17,9 17.5,10.5 18" fill="none" stroke="#B8935A" stroke-width="1.2"/><path d="M9 1 C3 5,2 12,8 16 C9 17,9 17.5,7.5 18" fill="none" stroke="#B8935A" stroke-width="1.2"/></svg><span class="rule"></span></div>
     <div class="eyebrow reveal" style="color:var(--gold-deep);">Axşamın gedişatı</div>
@@ -457,6 +528,8 @@
 
 <!-- RSVP -->
 <section class="rsvp">
+  <svg class="bg-floral corner-tr small"><use href="#roseMotif"/></svg>
+  <svg class="bg-floral corner-bl small"><use href="#roseMotif"/></svg>
   <div class="container">
     <div class="divider reveal"><span class="rule"></span><svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 1 C15 5,16 12,10 16 C9 17,9 17.5,10.5 18" fill="none" stroke="#B8935A" stroke-width="1.2"/><path d="M9 1 C3 5,2 12,8 16 C9 17,9 17.5,7.5 18" fill="none" stroke="#B8935A" stroke-width="1.2"/></svg><span class="rule"></span></div>
     <div class="eyebrow reveal" style="color:var(--gold-deep);">İştirakınız barədə</div>
@@ -472,7 +545,12 @@
 </section>
 
 <footer>
-  <div class="monogram">S &middot; Ş</div>
+  <svg class="bg-floral corner-tl"><use href="#roseMotif"/></svg>
+  <svg class="bg-floral corner-br"><use href="#roseMotif"/></svg>
+  <div class="monogram">
+    <svg width="26" height="26" viewBox="0 0 18 18" aria-hidden="true"><path d="M9 3 C 12 0, 17 3, 17 7 C 17 11, 12 13, 9 16 C 6 13, 1 11, 1 7 C 1 3, 6 0, 9 3 Z" fill="#F5EBD3"/></svg>
+    S &middot; Ş
+  </div>
   <p>Sevginizlə yanımızda olacağınız günü səbirsizliklə gözləyirik.</p>
 </footer>
 
