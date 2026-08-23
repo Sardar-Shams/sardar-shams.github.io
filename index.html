@@ -318,24 +318,113 @@
     .t-row{ gap: 12px; }
   }
 
-  /* ================= rsvp ================= */
-  .rsvp-frame{
+  /* ================= rsvp (custom elegant form) ================= */
+  .rsvp-card{
     margin-top: 40px;
-    border: 1px solid var(--gold);
-    background: #fff;
+    max-width: 480px;
+    margin-left:auto; margin-right:auto;
+    background: var(--card);
+    border: 1px solid rgba(184,147,90,0.4);
     box-shadow: 0 30px 60px -30px rgba(140,107,60,0.3);
-    padding: 6px;
+    padding: 40px 32px 34px;
+    text-align: left;
   }
-  .rsvp-frame iframe{ width:100%; height: 760px; border:0; display:block; -webkit-overflow-scrolling: touch; }
-  @media (max-width: 480px){ .rsvp-frame iframe{ height: 900px; } }
-  .rsvp-fallback{
-    margin-top: 16px;
+  @media (max-width: 480px){ .rsvp-card{ padding: 30px 20px 26px; } }
+
+  .rf-field{ margin-bottom: 24px; }
+  .rf-field label{
+    display:block;
     font-family:'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 0.95rem;
-    color: var(--ink-soft);
+    font-size: 1.05rem;
+    color: var(--gold-deep);
+    margin-bottom: 10px;
   }
-  .rsvp-fallback a{ color: var(--gold-deep); text-decoration: underline; }
+  .rf-field .req{ color: var(--rose-deep); font-style: normal; }
+
+  .rf-input, .rf-textarea{
+    width:100%;
+    font-family: 'Noto Serif', serif;
+    font-size: 0.98rem;
+    color: var(--ink);
+    background: #FEFBF3;
+    border: none;
+    border-bottom: 1px solid var(--gold);
+    padding: 10px 4px;
+    outline: none;
+    transition: border-color 0.25s ease, background 0.25s ease;
+  }
+  .rf-textarea{ resize: vertical; min-height: 64px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; }
+  .rf-input:focus, .rf-textarea:focus{ border-bottom-color: var(--gold-deep); background: #FFFDF6; }
+  .rf-input::placeholder, .rf-textarea::placeholder{ color: #B3A488; font-style: italic; }
+
+  .pill-group{ display:flex; flex-wrap: wrap; gap: 10px; }
+  .pill{
+    font-family: 'Noto Serif', serif;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    background: transparent;
+    border: 1px solid rgba(184,147,90,0.55);
+    padding: 9px 18px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 2px;
+  }
+  .pill:hover{ border-color: var(--gold-deep); color: var(--ink); }
+  .pill.is-selected{
+    background: linear-gradient(180deg, #C9A468 0%, #A9803F 100%);
+    border-color: var(--gold-deep);
+    color: #FCF7EA;
+  }
+
+  .rf-submit{
+    width: 100%;
+    margin-top: 6px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    font-size: 1.1rem;
+    color: #FCF7EA;
+    background: linear-gradient(180deg, #C9A468 0%, #8C6B3C 100%);
+    border: none;
+    padding: 14px 0;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .rf-submit:hover{ opacity: 0.92; }
+  .rf-submit:disabled{ opacity: 0.6; cursor: default; }
+
+  .rf-status{
+    margin-top: 14px;
+    font-size: 0.85rem;
+    color: var(--rose-deep);
+    text-align:center;
+    min-height: 18px;
+  }
+
+  .rsvp-thanks{
+    max-width: 480px;
+    margin: 40px auto 0;
+    text-align:center;
+    padding: 44px 30px;
+    background: var(--card);
+    border: 1px solid rgba(184,147,90,0.4);
+  }
+  .rsvp-thanks .check{
+    width: 46px; height:46px; margin: 0 auto 18px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .rsvp-thanks p{
+    font-family:'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.6;
+  }
 
   /* ================= footer ================= */
   footer{
@@ -518,9 +607,9 @@
       <div class="t-row"><div class="t-time">20:30</div><div class="t-dot"></div><div class="t-label">Samir Bağırov</div></div>
       <div class="t-row"><div class="t-time">21:00</div><div class="t-dot"></div><div class="t-label">Plov servisi</div></div>
       <div class="t-row"><div class="t-time">21:30</div><div class="t-dot"></div><div class="t-label">Edglis Hayle</div></div>
-      <div class="t-row"><div class="t-time">22:00</div><div class="t-dot"></div><div class="t-label">Dj Javad</div></div>
+      <div class="t-row"><div class="t-time">22:00</div><div class="t-dot"></div><div class="t-label">Diskoteka</div></div>
       <div class="t-row"><div class="t-time">22:30</div><div class="t-dot"></div><div class="t-label">Tort mərasimi</div></div>
-      <div class="t-row"><div class="t-time">22:40</div><div class="t-dot"></div><div class="t-label">Dj Javad</div></div>
+      <div class="t-row"><div class="t-time">22:40</div><div class="t-dot"></div><div class="t-label">Diskoteka</div></div>
       <div class="t-row"><div class="t-time">23:30</div><div class="t-dot"></div><div class="t-label">Yekun</div></div>
     </div>
   </div>
@@ -534,13 +623,52 @@
     <div class="divider reveal"><span class="rule"></span><svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 1 C15 5,16 12,10 16 C9 17,9 17.5,10.5 18" fill="none" stroke="#B8935A" stroke-width="1.2"/><path d="M9 1 C3 5,2 12,8 16 C9 17,9 17.5,7.5 18" fill="none" stroke="#B8935A" stroke-width="1.2"/></svg><span class="rule"></span></div>
     <div class="eyebrow reveal" style="color:var(--gold-deep);">İştirakınız barədə</div>
     <h2 class="section-title reveal">Aşağıdakı formu doldurmağınız xahiş olunur</h2>
-    <div class="rsvp-frame reveal">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdOib1fJG00uGmWhcfUhw5lSw3P8DDMvNca_OM-xaDo1CIdtg/viewform?embedded=true" title="RSVP Formu" loading="lazy" referrerpolicy="no-referrer-when-downgrade">Yüklənir…</iframe>
+
+    <form class="rsvp-card reveal" id="rsvpForm" novalidate>
+      <div class="rf-field">
+        <label for="rsvpName">Ad və Soyad <span class="req">*</span></label>
+        <input class="rf-input" type="text" id="rsvpName" placeholder="Adınızı buraya yazın" required>
+      </div>
+
+      <div class="rf-field">
+        <label>İştirak statusu <span class="req">*</span></label>
+        <div class="pill-group" data-group="attendance">
+          <button type="button" class="pill" data-value="İştirak edəcəm">İştirak edəcəm</button>
+          <button type="button" class="pill" data-value="İştirak edə bilməyəcəm">İştirak edə bilməyəcəm</button>
+        </div>
+      </div>
+
+      <div class="rf-field">
+        <label>Tərəf</label>
+        <div class="pill-group" data-group="side">
+          <button type="button" class="pill" data-value="Bəy">Bəy tərəfi</button>
+          <button type="button" class="pill" data-value="Gəlin">Gəlin tərəfi</button>
+        </div>
+      </div>
+
+      <div class="rf-field">
+        <label>Qonaq sayı</label>
+        <div class="pill-group" data-group="plusone">
+          <button type="button" class="pill" data-value="Bir nəfər">Tək gələcəm</button>
+          <button type="button" class="pill" data-value="Ailəliklə">Ailəliklə / cütlükdə</button>
+        </div>
+      </div>
+
+      <div class="rf-field">
+        <label for="rsvpNotes">Qeyd və ürək sözləri</label>
+        <textarea class="rf-textarea" id="rsvpNotes" placeholder="Bizə ürək sözlərinizi bildirin..." rows="3"></textarea>
+      </div>
+
+      <button type="submit" class="rf-submit" id="rsvpSubmit">Göndər</button>
+      <p class="rf-status" id="rsvpStatus"></p>
+    </form>
+
+    <div class="rsvp-thanks reveal" id="rsvpThanks" hidden>
+      <div class="check">
+        <svg width="20" height="16" viewBox="0 0 20 16" fill="none"><path d="M1 8 L7 14 L19 1" stroke="#B8935A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <p>Təşəkkür edirik!<br>Cavabınız qeydə alındı.</p>
     </div>
-    <p class="rsvp-fallback reveal">
-      Form açılmırsa,
-      <a href="https://forms.gle/pB8bmvZjFLZdc6y37" target="_blank" rel="noopener">bura klikləyin</a>.
-    </p>
   </div>
 </section>
 
@@ -577,6 +705,82 @@
   }
   updateCountdown();
   setInterval(updateCountdown, 1000);
+
+  // ---- RSVP form: pill selection + silent submit to Google Form backend ----
+  const GOOGLE_FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSdOib1fJG00uGmWhcfUhw5lSw3P8DDMvNca_OM-xaDo1CIdtg/formResponse';
+  const ENTRY_IDS = {
+    name: 'entry.410035587',
+    attendance: 'entry.856639217',
+    side: 'entry.439703091',
+    plusone: 'entry.1450983722',
+    notes: 'entry.417433596'
+  };
+
+  const selections = { attendance: '', side: '', plusone: '' };
+
+  document.querySelectorAll('.pill-group').forEach(group => {
+    const key = group.getAttribute('data-group');
+    group.querySelectorAll('.pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const already = btn.classList.contains('is-selected');
+        group.querySelectorAll('.pill').forEach(b => b.classList.remove('is-selected'));
+        if (!already){
+          btn.classList.add('is-selected');
+          selections[key] = btn.getAttribute('data-value');
+        } else {
+          selections[key] = '';
+        }
+      });
+    });
+  });
+
+  const rsvpForm = document.getElementById('rsvpForm');
+  const rsvpStatus = document.getElementById('rsvpStatus');
+  const rsvpSubmitBtn = document.getElementById('rsvpSubmit');
+
+  if (rsvpForm){
+    rsvpForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('rsvpName').value.trim();
+      const notes = document.getElementById('rsvpNotes').value.trim();
+
+      if (!name){
+        rsvpStatus.textContent = 'Zəhmət olmasa adınızı daxil edin.';
+        return;
+      }
+      if (!selections.attendance){
+        rsvpStatus.textContent = 'Zəhmət olmasa iştirak statusunu seçin.';
+        return;
+      }
+
+      rsvpStatus.textContent = '';
+      rsvpSubmitBtn.disabled = true;
+      rsvpSubmitBtn.textContent = 'Göndərilir...';
+
+      const params = new URLSearchParams();
+      params.append(ENTRY_IDS.name, name);
+      params.append(ENTRY_IDS.attendance, selections.attendance);
+      if (selections.side) params.append(ENTRY_IDS.side, selections.side);
+      if (selections.plusone) params.append(ENTRY_IDS.plusone, selections.plusone);
+      if (notes) params.append(ENTRY_IDS.notes, notes);
+
+      fetch(GOOGLE_FORM_ACTION, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params.toString()
+      }).then(() => {
+        rsvpForm.hidden = true;
+        const thanks = document.getElementById('rsvpThanks');
+        thanks.hidden = false;
+        thanks.classList.add('in');
+      }).catch(() => {
+        rsvpSubmitBtn.disabled = false;
+        rsvpSubmitBtn.textContent = 'Göndər';
+        rsvpStatus.textContent = 'Xəta baş verdi, yenidən cəhd edin.';
+      });
+    });
+  }
 </script>
 
 </body>
