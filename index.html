@@ -445,6 +445,225 @@
     footer{ padding: 40px 18px 32px; }
   }
 </style>
+<style>
+  /* 2026 refined edition — understated old-money palette and editorial spacing */
+  :root{
+    --page:#F4F0E7;
+    --card:#FAF8F2;
+    --gold:#B89A65;
+    --gold-light:#D7C7A8;
+    --gold-deep:#8B744E;
+    --ink:#17212A;
+    --ink-soft:#65707A;
+    --blush:#E8E0D2;
+    --rose:#D9D0C2;
+    --rose-deep:#8D3D48;
+    --leaf:#8294A5;
+    --navy:#0B1824;
+  }
+  body{ background:var(--page); color:var(--ink); }
+  .bg-floral,.floral{ display:none; }
+
+  .hero-wrap{
+    min-height:100svh;
+    display:grid;
+    place-items:center;
+    padding:clamp(30px,5vw,64px);
+    color:var(--page);
+    background:
+      radial-gradient(circle at 50% 44%,rgba(57,78,96,.34),transparent 38%),
+      linear-gradient(145deg,#0D1B28 0%,#07121C 72%,#0F2130 100%);
+  }
+  .hero-wrap::before{
+    content:"&";
+    position:absolute;
+    left:50%;top:50%;
+    transform:translate(-50%,-54%);
+    font:400 min(70vw,700px)/.72 'Cormorant Garamond',serif;
+    color:rgba(184,154,101,.055);
+  }
+  .hero-wrap::after{
+    content:"";
+    position:absolute;
+    inset:18px;
+    border:1px solid rgba(215,199,168,.45);
+    pointer-events:none;
+  }
+  .invite-card{
+    max-width:1100px;
+    min-height:min(780px,calc(100svh - 64px));
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:clamp(58px,8vw,100px) clamp(28px,7vw,90px);
+    color:var(--page);
+    background:transparent;
+    box-shadow:none;
+  }
+  .card-border{
+    inset:8px;
+    border:0;
+  }
+  .card-border::before{ display:none; }
+  .card-border .corner{ width:52px;height:52px;border-color:var(--gold);opacity:.8; }
+  .eyebrow{
+    margin:0 0 clamp(26px,4vw,46px);
+    color:var(--gold-light)!important;
+    font-size:10px;
+    font-weight:500;
+    letter-spacing:.36em;
+  }
+  .flourish{ display:none; }
+  .names{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:clamp(20px,5vw,62px);
+    width:100%;
+    margin:0;
+    color:var(--page)!important;
+    background:none!important;
+    -webkit-text-fill-color:currentColor!important;
+    font-style:normal;
+    font-weight:400;
+    letter-spacing:-.045em;
+  }
+  .names::before{
+    content:"&";
+    order:2;
+    color:var(--gold);
+    font-size:clamp(2.2rem,5vw,4.3rem);
+    font-style:italic;
+  }
+  .names .n1,.names .n2{
+    font-size:clamp(4.7rem,11vw,9.4rem);
+    line-height:.88;
+  }
+  .names .n1{ order:1;transform:translateY(-.1em); }
+  .names .n2{ order:3;margin:0;transform:translateY(.1em); }
+  .name-divider{ display:none; }
+  .invite-line{
+    margin:clamp(40px,6vw,64px) 0 0;
+    color:rgba(244,240,231,.76);
+    font-size:clamp(1rem,2vw,1.25rem);
+    letter-spacing:.04em;
+  }
+  .small-rule{ width:72px;background:var(--gold);opacity:.65;margin:20px auto; }
+  .hero-date-big{
+    margin:0;
+    color:var(--page);
+    font-size:clamp(2rem,4.5vw,3.2rem);
+    font-weight:400;
+    letter-spacing:.13em;
+  }
+  .hero-time{ color:var(--gold-light);font-size:.88rem;letter-spacing:.16em;text-transform:uppercase; }
+  .venue-name{ margin-top:12px;color:var(--page);font-size:1rem;letter-spacing:.22em; }
+  .venue-sub,.venue-address{ color:#9EABB5; }
+
+  section{ padding:clamp(90px,11vw,135px) 24px; }
+  .container{ max-width:1000px; }
+  section:not(.details):not(.rsvp){
+    background:
+      linear-gradient(rgba(184,154,101,.05) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(184,154,101,.05) 1px,transparent 1px),
+      var(--card);
+    background-size:42px 42px;
+  }
+  .divider{ color:var(--gold); }
+  .section-title{
+    margin-top:22px;
+    color:var(--ink);
+    font-size:clamp(2.8rem,6vw,5.4rem);
+    font-style:normal;
+    font-weight:400;
+    line-height:1.06;
+    letter-spacing:-.04em;
+  }
+  .invite-text{
+    max-width:660px;
+    margin:38px auto 0;
+    color:var(--ink-soft);
+    font-size:clamp(1.15rem,2.3vw,1.45rem);
+    line-height:1.85;
+  }
+
+  .details{ color:var(--page);background:var(--navy);border:0; }
+  .details .section-title{ color:var(--page); }
+  .details .eyebrow{ margin-bottom:0; }
+  .cards{
+    grid-template-columns:repeat(3,1fr);
+    gap:0;
+    margin-top:70px;
+    border-top:1px solid rgba(215,199,168,.3);
+    border-bottom:1px solid rgba(215,199,168,.3);
+  }
+  .card{
+    min-height:220px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:40px 30px;
+    color:var(--page);
+    background:transparent;
+    border:0;
+  }
+  .card+.card{ border-left:1px solid rgba(215,199,168,.3); }
+  .card svg{ stroke:var(--gold-light); }
+  .card h3{ color:var(--leaf);font-size:9px;letter-spacing:.25em; }
+  .card p{ color:var(--page);font-family:'Cormorant Garamond',serif;font-size:1.35rem; }
+  .countdown{ gap:clamp(18px,5vw,54px);margin-top:72px; }
+  .cd-num{ color:var(--gold-light);font-size:clamp(2.3rem,5vw,4rem);font-weight:400; }
+  .cd-label{ color:#9EABB5; }
+
+  .program{ background:var(--card)!important; }
+  .program .eyebrow{ margin:24px 0 0; }
+  .timeline{ max-width:680px;margin-top:70px; }
+  .timeline::before{ left:121px;background:var(--gold-light);opacity:.65; }
+  .t-row{ gap:28px;min-height:66px;padding:14px 0;border-bottom:1px solid rgba(184,154,101,.18); }
+  .t-time{ flex-basis:95px;color:var(--gold-deep);font-size:1.14rem;font-weight:500; }
+  .t-dot{ width:8px;height:8px;background:var(--card);border-color:var(--gold);border-radius:0;transform:rotate(45deg); }
+  .t-label{ color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:1.18rem; }
+
+  .rsvp{ position:relative;background:#EBE4D6; }
+  .rsvp-card,.rsvp-thanks{
+    max-width:620px;
+    margin-top:55px;
+    padding:clamp(34px,6vw,64px);
+    background:rgba(250,248,242,.96);
+    border:1px solid rgba(139,116,78,.4);
+    box-shadow:0 30px 90px rgba(45,39,29,.09);
+  }
+  .rf-field label{ color:var(--gold-deep);font-size:.92rem;letter-spacing:.03em; }
+  .rf-input,.rf-textarea{ color:var(--ink);background:transparent;border-bottom-color:#B9AD98; }
+  .pill{ color:#59636C;border-color:#C8BEAD;border-radius:0; }
+  .pill.is-selected{ color:var(--page);background:var(--navy);border-color:var(--navy); }
+  .rf-submit{ min-height:56px;color:var(--page);background:var(--navy);font-size:1rem;border:1px solid var(--navy); }
+  .rf-submit:hover{ color:var(--navy);background:var(--gold-light);opacity:1; }
+  footer{ background:var(--navy);padding:80px 24px 72px;color:var(--page); }
+  footer .monogram{ color:var(--gold-light);font-size:1.25rem;letter-spacing:.2em; }
+  footer .monogram svg{ display:none; }
+
+  @media(max-width:700px){
+    .hero-wrap{ padding:24px; }
+    .hero-wrap::after{ inset:12px; }
+    .invite-card{ min-height:calc(100svh - 48px);padding:58px 24px; }
+    .names{ flex-direction:column;gap:4px; }
+    .names .n1,.names .n2{ font-size:clamp(4.2rem,22vw,6.8rem);transform:none; }
+    .names::before{ font-size:2rem;margin:-10px 0 -14px; }
+    .invite-line{ line-height:1.6; }
+    .cards{ grid-template-columns:1fr; }
+    .card{ min-height:0;padding:32px 22px; }
+    .card+.card{ border-left:0;border-top:1px solid rgba(215,199,168,.3); }
+    .countdown{ gap:10px; }
+    .cd-unit{ min-width:58px; }
+    .timeline::before{ left:83px; }
+    .t-time{ flex-basis:60px; }
+    .t-row{ gap:16px; }
+    .section-title{ font-size:clamp(2.5rem,13vw,4rem); }
+  }
+</style>
 </head>
 <body>
 
@@ -540,7 +759,7 @@
     <div class="small-rule"></div>
     <div class="venue-name">Ma Donna</div>
     <div class="venue-sub">Şadlıq Sarayı</div>
-    <div class="venue-address">Ünvan: 24 Mehdi Abbasov, Baku</div>
+    <div class="venue-address">Ünvan: 24 Mehdi Abbasov, Bakı</div>
   </div>
 </div>
 
@@ -578,7 +797,7 @@
       <div class="card reveal">
         <svg viewBox="0 0 24 24" fill="none" stroke="#B8935A" stroke-width="1.3"><path d="M12 21s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
         <h3>Məkan</h3>
-        <p>Ma Donna Şadlıq Sarayı<br>24 Mehdi Abbasov, Baku</p>
+        <p>Ma Donna Şadlıq Sarayı<br>24 Mehdi Abbasov, Bakı</p>
       </div>
     </div>
 
