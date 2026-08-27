@@ -561,6 +561,52 @@
   .hero-time{ color:var(--gold-light);font-size:.88rem;letter-spacing:.16em;text-transform:uppercase; }
   .venue-name{ margin-top:12px;color:var(--page);font-size:1rem;letter-spacing:.22em; }
   .venue-sub,.venue-address{ color:#9EABB5; }
+  .hero-scroll-cue{
+    position:absolute!important;
+    left:50%;
+    bottom:24px;
+    z-index:4!important;
+    display:flex!important;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    color:var(--gold-light);
+    transform:translateX(-50%);
+    transition:color .25s ease;
+  }
+  .hero-scroll-cue:hover{ color:var(--page); }
+  .hero-scroll-label{
+    padding-left:.28em;
+    font-size:8px;
+    font-weight:500;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+  }
+  .hero-scroll-symbol{
+    width:34px;
+    height:44px;
+    display:grid;
+    place-items:center;
+    border:1px solid rgba(215,199,168,.62);
+    border-radius:999px;
+  }
+  .hero-scroll-symbol svg{
+    width:17px;
+    height:17px;
+    fill:none;
+    stroke:currentColor;
+    stroke-width:1.35;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    animation:scrollHint 1.65s ease-in-out infinite;
+  }
+  @keyframes scrollHint{
+    0%,100%{ opacity:.55;transform:translateY(-3px); }
+    50%{ opacity:1;transform:translateY(4px); }
+  }
+  @media(prefers-reduced-motion:reduce){
+    .hero-scroll-symbol svg{ animation:none; }
+  }
 
   section{ padding:clamp(90px,11vw,135px) 24px; }
   .container{ max-width:1000px; }
@@ -649,6 +695,8 @@
     .hero-wrap{ padding:24px; }
     .hero-wrap::after{ inset:12px; }
     .invite-card{ min-height:calc(100svh - 48px);padding:58px 24px; }
+    .hero-scroll-cue{ bottom:16px; }
+    .hero-scroll-label{ font-size:7px; }
     .names{ flex-direction:column;gap:4px; }
     .names .n1,.names .n2{ font-size:clamp(4.2rem,22vw,6.8rem);transform:none; }
     .names::before{ font-size:2rem;margin:-10px 0 -14px; }
@@ -761,10 +809,16 @@
     <div class="venue-sub">Şadlıq Sarayı</div>
     <div class="venue-address">Ünvan: 24 Mehdi Abbasov, Bakı</div>
   </div>
+  <a class="hero-scroll-cue" href="#invitation-section" aria-label="Aşağı sürüşdürərək dəvətnaməni oxu">
+    <span class="hero-scroll-label">Davam et</span>
+    <span class="hero-scroll-symbol" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M7 9.5 12 14.5 17 9.5"/></svg>
+    </span>
+  </a>
 </div>
 
 <!-- INVITATION TEXT -->
-<section>
+<section id="invitation-section">
   <svg class="bg-floral corner-tr small"><use href="#roseMotif"/></svg>
   <div class="container">
     <div class="divider reveal"><span class="rule"></span><svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 1 C15 5,16 12,10 16 C9 17,9 17.5,10.5 18" fill="none" stroke="#B8935A" stroke-width="1.2"/><path d="M9 1 C3 5,2 12,8 16 C9 17,9 17.5,7.5 18" fill="none" stroke="#B8935A" stroke-width="1.2"/></svg><span class="rule"></span></div>
@@ -826,10 +880,9 @@
       <div class="t-row"><div class="t-time">20:30</div><div class="t-dot"></div><div class="t-label">Samir Bağırov</div></div>
       <div class="t-row"><div class="t-time">21:00</div><div class="t-dot"></div><div class="t-label">Plov servisi</div></div>
       <div class="t-row"><div class="t-time">21:30</div><div class="t-dot"></div><div class="t-label">Edglis Hayle</div></div>
-      <div class="t-row"><div class="t-time">22:00</div><div class="t-dot"></div><div class="t-label">Diskoteka</div></div>
-      <div class="t-row"><div class="t-time">22:30</div><div class="t-dot"></div><div class="t-label">Tort mərasimi</div></div>
-      <div class="t-row"><div class="t-time">22:40</div><div class="t-dot"></div><div class="t-label">Diskoteka</div></div>
-      <div class="t-row"><div class="t-time">23:30</div><div class="t-dot"></div><div class="t-label">Yekun</div></div>
+      <div class="t-row"><div class="t-time">22:00</div><div class="t-dot"></div><div class="t-label">Tort mərasimi</div></div>
+      <div class="t-row"><div class="t-time">22:15</div><div class="t-dot"></div><div class="t-label">Diskoteka</div></div>
+      <div class="t-row"><div class="t-time">23:00</div><div class="t-dot"></div><div class="t-label">Yekun</div></div>
     </div>
   </div>
 </section>
